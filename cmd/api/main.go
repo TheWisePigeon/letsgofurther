@@ -33,9 +33,7 @@ func main() {
 		config: appConfig,
 		logger: logger,
 	}
-	mux := http.NewServeMux()
-	mux.Handle("GET /v1/healthcheck", nil)
-
+	mux := app.routes()
 	server := &http.Server{
 		Addr:         fmt.Sprintf(":%d", app.config.port),
 		Handler:      mux,
